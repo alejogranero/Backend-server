@@ -23,6 +23,7 @@ var busquedaRoutes = require('./routes/busqueda');
 var hospitalRoutes = require('./routes/hospital');
 var medicoRoutes = require('./routes/medico');
 var uploadRoutes = require('./routes/upload');
+var imagenesRoutes = require('./routes/imagenes');
 
 
 // Conexión a BD
@@ -40,7 +41,8 @@ app.use('/hospital', hospitalRoutes);
 app.use('/busqueda', busquedaRoutes);
 app.use('/medico', medicoRoutes);
 app.use('/login', loginRoutes);
-app.use('/upload', uploadRoutes)
+app.use('/upload', uploadRoutes);
+app.use('/img', imagenesRoutes);
 app.use('/', appRoutes);
 
 // Escuchar peticiones
