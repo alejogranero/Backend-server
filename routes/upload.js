@@ -95,7 +95,7 @@ function subirPorTipo(tipo, id, nombreArchivo, response) {
                 });
             }
 
-            var pathViejo = './uploads/usuarios/' + usuario.img;
+            var pathViejo = './uploads/usuarios/' + usuario.id;
 
             // Si existe, elimina la imagen anterior
             if (fs.existsSync(pathViejo)) {

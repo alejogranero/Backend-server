@@ -14,7 +14,7 @@ var mdAutenticacion = require('../middlewares/autenticacion');
 // Crear un nuevo usuario
 // ===============================================
 
-app.post('/', mdAutenticacion.verificaToken, function(req, res) {
+app.post('/', function(req, res) {
 
 
     var body = req.body;
