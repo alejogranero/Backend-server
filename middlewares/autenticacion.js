@@ -26,3 +26,48 @@ exports.verificaToken = function(req, res, next) {
 
     });
 };
+
+// =====================================
+// Middleware - verificar admin
+// =====================================
+
+exports.verificaAdmin_role = function(req, res, next) {
+
+    var usuario = req.usuario;
+
+    if (usuario.role === 'ADMIN_ROLE') {
+        next();
+        return;
+    } else {
+        return res.status(401).json({
+            ok: false,
+            mensaje: 'Token incorrecto',
+            errors: { message: 'No es administrador' }
+        });
+    }
+
+
+};
+// =====================================
+// Middleware - verificar admin o mismo usuario
+// =====================================
+
+exports.verificaAdmin_oMismoUsuario = function(req, res, next) {
+
+    var usuario = req.usuario;
+    var id = req.params.id;
+
+    // Compara el id del token con el que viene por parámetro
+    if (usuario.role === 'ADMIN_ROLE' || usuario._id === id) {
+        next();
+        return;
+    } else {
+        return res.status(401).json({
+            ok: false,
+            mensaje: 'Token incorrecto',
+            errors: { message: 'No es administrador ni em mismo usuario' }
+        });
+    }
+
+
+};
